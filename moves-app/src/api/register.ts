@@ -4,6 +4,7 @@ export const REGISTER_USER = gql`
   mutation register($username: String!, $password: String!) {
     register(username: $username, password: $password) {
       token
+      id
     }
   }
 `;

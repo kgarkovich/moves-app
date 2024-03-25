@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../api';
 import { setUserId, setToken } from '../utils/jwt-token';
 import { Container, Button, Row, Col, Form } from 'react-bootstrap';
+import { log } from 'console';
 
 export const Login = () => {
     const [username, setUsername] = useState('');
@@ -22,6 +23,7 @@ export const Login = () => {
         });
 
         if (data.login.token && data.login.id) {
+          console.log(data.login.id)
             setToken(data.login.token);
             setUserId(data.login.id);
             
@@ -43,12 +45,12 @@ export const Login = () => {
               <Form.Group className="mb-3" controlId="formGroupEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control type="email" placeholder="Enter email" value={username}
-              onChange={(e) => setUsername(e.target.value)} />
+                onChange={(e) => setUsername(e.target.value)} />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formGroupPassword">
                   <Form.Label>Password</Form.Label>
                   <Form.Control type="password" placeholder="Password" value={password}
-              onChange={(e) => setPassword(e.target.value)} />
+                    onChange={(e) => setPassword(e.target.value)} />
               </Form.Group>
               <Button type="submit" variant="dark">Login</Button>
             </Form>

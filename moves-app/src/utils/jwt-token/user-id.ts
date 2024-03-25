@@ -1,5 +1,5 @@
 export const setUserId = (id: string) => {
-    localStorage.setItem('token', id);
+    localStorage.setItem('user_id', id);
 };
 
 export const getUserId = (): string | null => {

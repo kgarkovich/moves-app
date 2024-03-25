@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { REGISTER_USER } from '../api';
-import { setToken } from '../utils/jwt-token';
+import { setUserId, setToken } from '../utils/jwt-token';
 import { Container, Button, Row, Col, Form } from 'react-bootstrap';
 import { useNavigate  } from "react-router-dom";
 
@@ -22,8 +22,9 @@ export const Register = () => {
         variables: { username, password },
       });
 
-      if (data.register.token) {
+      if (data.register) {
         setToken(data.register.token);
+        setUserId(data.register.id);
             
         navigate('/dashboard');
       } else {
