@@ -4,7 +4,6 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../api';
 import { setUserId, setToken } from '../utils/jwt-token';
 import { Container, Button, Row, Col, Form } from 'react-bootstrap';
-import { log } from 'console';
 
 export const Login = () => {
     const [username, setUsername] = useState('');

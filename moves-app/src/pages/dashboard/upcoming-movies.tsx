@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/client';
-import { Link } from 'react-router-dom';
 import { Container, Row, Card , Modal } from 'react-bootstrap';
-import { POPULAR_MOVIES_QUERY } from '../../api';
 import { IMovie } from '../../types';
+import { UPCOMING_MOVIES_QUERY } from '../../api';
+import { Link } from 'react-router-dom';
 
-export const PopularMovies = () => {
-    const { loading, error, data } = useQuery(POPULAR_MOVIES_QUERY);
+export const UpcomingMovies = () => {
+    const { loading, error, data } = useQuery(UPCOMING_MOVIES_QUERY);
 
     console.log(data)
 
@@ -16,9 +16,9 @@ export const PopularMovies = () => {
 
     return (
         <Container className="mt-4">
-            <Modal.Title id="example-custom-modal-styling-title">Popular movies</Modal.Title>
+            <Modal.Title id="example-custom-modal-styling-title">Upcoming movies</Modal.Title>
             <Row className="mt-3">
-                {data.popularMovies.map((movie: IMovie) => (
+                {data.anticipatedMovies.map((movie: IMovie) => (
                     <Card style={{ width: '9.85rem', margin: '0.5rem', padding: 0 }} key={movie.id}>
                         <Link to={`/movie/${movie.id}`}>
                             <Card.Img variant="top" src={`${baseUrl}/w500${movie.poster_path}`} />

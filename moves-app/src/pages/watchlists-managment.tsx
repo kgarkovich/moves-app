@@ -94,7 +94,7 @@ export const WatchlistsManagment = () => {
                 {
                     !loading && data && data.allWatchLists.map((item: IWatchlist) => {
                         return (
-                            <ListGroup.Item key={item.id}  className="d-flex justify-content-between align-items-center">{item.title} 
+                            <ListGroup.Item key={item.id} className="d-flex justify-content-between align-items-center">{item.title} 
                                 <Button variant="dark" onClick={(event) => handleRemoveWatchlist(event, item.id)}>Remove</Button>
                             </ListGroup.Item>
                         )
