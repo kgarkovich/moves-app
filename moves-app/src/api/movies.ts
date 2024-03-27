@@ -37,7 +37,11 @@ export const MOVIE_DETAILS_QUERY = gql`
             title
             overview
             release_date
-            backdrop_path
+            poster_path
+            genres {
+                id
+                name
+            }
         }
     }
 `;

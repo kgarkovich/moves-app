@@ -7,8 +7,6 @@ import { Link } from 'react-router-dom';
 export const UpcomingMovies = () => {
     const { loading, error, data } = useQuery(UPCOMING_MOVIES_QUERY);
 
-    console.log(data)
-
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error</p>;
 

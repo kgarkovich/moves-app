@@ -7,8 +7,6 @@ import { ALL_MOVIES_QUERY } from '../../api';
 export const AllMovies = () => {
     const { loading, error, data } = useQuery(ALL_MOVIES_QUERY);
 
-    console.log(data)
-
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error</p>;
 

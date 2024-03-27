@@ -15,11 +15,11 @@ export const Header = () => {
     return (
         <Navbar bg="dark" data-bs-theme="dark">
             <Container>
-              <Navbar.Brand>MOVIES</Navbar.Brand>
+              <Navbar.Brand><NavLink to={'/dashboard'} style={{textDecoration: 'none'}}>MOVIES</NavLink></Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                  {isAuthenticated && <NavLink to="/watchlists-managment">Watchlists managment</NavLink>}
+                  {isAuthenticated && <NavLink to="/watchlists-managment" style={{textDecoration: 'none'}}>Watchlists managment</NavLink>}
                 </Nav>
               </Navbar.Collapse>
               <Navbar.Collapse className="justify-content-end">

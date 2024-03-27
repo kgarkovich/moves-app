@@ -2,26 +2,25 @@ import { Container, Button, Modal, Form, ListGroup } from 'react-bootstrap';
 import React, { useState } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { CREATE_WATCHLIST, ALL_WATCHLISTS, REMOVE_WATCHLIST } from '../api';
+import { IWatchlist } from '../types';
 import { getUserId } from '../utils/jwt-token';
-
-
-interface IWatchlist {
-    id: string;
-    title: string;
-}
+import { Link } from 'react-router-dom';
 
 export const WatchlistsManagment = () => {
   const [show, setShow] = useState(false);
   const [title, setTitle] = useState('');
     
+  const userId = getUserId();
+
   const [createWatchlist] = useMutation(CREATE_WATCHLIST);
   const [removeWatchlist] = useMutation(REMOVE_WATCHLIST);
-  const { loading, error, data, refetch } = useQuery(ALL_WATCHLISTS);
+
+  const { loading, error, data, refetch } = useQuery(ALL_WATCHLISTS, {
+    variables: { userId }
+  });
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  const userId = getUserId();
 
   const handleCreateWatchlist = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -94,7 +93,10 @@ export const WatchlistsManagment = () => {
                 {
                     !loading && data && data.allWatchLists.map((item: IWatchlist) => {
                         return (
-                            <ListGroup.Item key={item.id} className="d-flex justify-content-between align-items-center">{item.title} 
+                            <ListGroup.Item key={item.id} className="d-flex justify-content-between align-items-center">
+                                <Link to={`/watchlist/${item.id}`}>
+                                     {item.title} 
+                                </Link>
                                 <Button variant="dark" onClick={(event) => handleRemoveWatchlist(event, item.id)}>Remove</Button>
                             </ListGroup.Item>
                         )

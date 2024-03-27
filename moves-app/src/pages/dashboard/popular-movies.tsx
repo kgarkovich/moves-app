@@ -7,8 +7,6 @@ import { IMovie } from '../../types';
 export const PopularMovies = () => {
     const { loading, error, data } = useQuery(POPULAR_MOVIES_QUERY);
 
-    console.log(data)
-
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error</p>;
 
